@@ -49,17 +49,20 @@ public class MyntraTest {
 	  {
 		
 		
-		//myt.launchBrowser();
+	
 		myt = new Myntra(driver);
 		myt.enterUrl2();
 		myt.login();
-		 String exceptedPageTitle = "Hey, it feels so light!";
-         String actualPageTitle = driver.findElement(By.xpath("//div[text()='Hey, it feels so light!']")).getText();
+		String exceptedPageTitle = "Hey, it feels so light!";
+        String actualPageTitle = driver.findElement(By.xpath("//div[text()='Hey, it feels so light!']")).getText();
 		Assert.assertEquals(actualPageTitle,exceptedPageTitle,"cart is empty");
 		driver.findElement(By.xpath("//div[text()='ADD ITEMS FROM WISHLIST']")).click();
-		//myt.emptyCardVerify();
-	    myt.search();
+		myt.search();
 	    myt.addtocart();
+	    String exceptedPageTitle1 = "Lavender Textured Structured Mobile Pouch";
+        String actualPageTitle2 = driver.findElement(By.xpath("//a[contains(@class,\"itemContainer-base-itemLink\")]")).getText();
+		Assert.assertEquals(actualPageTitle,exceptedPageTitle,"iteam is added");
+		driver.quit();
 		  
 	  }
 }
